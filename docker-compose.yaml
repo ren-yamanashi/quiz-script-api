@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  db:
+    container_name: 'quiz-script-db'
+    image: postgres:12
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=quiz-script-api
+      # - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - '0.0.0.0:5434:5432'

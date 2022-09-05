@@ -38,6 +38,7 @@ export const typeDefs = gql`
     deleteQuizResult(id: Int!): QuizResultPayload!
     deleteUser(id: String!): AuthPayload!
   }
+
   type User {
     id: String!
     name: String!
@@ -53,6 +54,7 @@ export const typeDefs = gql`
   }
   type Quiz {
     id: String!
+    title: String!
     question: String!
     startCode: String!
     answerCode: String!
@@ -101,7 +103,7 @@ export const typeDefs = gql`
     quizResult: QuizResult!
   }
 
-  # inputTypes
+  ## inputTypes
   ## add
   input SignupInput {
     name: String!
@@ -114,6 +116,7 @@ export const typeDefs = gql`
     password: String!
   }
   input AddQuizInput {
+    title: String!
     question: String!
     startCode: String!
     answerCode: String!
@@ -131,6 +134,7 @@ export const typeDefs = gql`
     quizId: String!
     userId: String!
   }
+
   ## update
   input UpdateUserInput {
     name: String
@@ -142,6 +146,7 @@ export const typeDefs = gql`
     userId: String
   }
   input UpdateQuizInput {
+    title: String
     question: String
     startCode: String
     answerCode: String

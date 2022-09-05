@@ -1,3 +1,9 @@
+const USER_ROLE = {
+  ADMIN: "ADMIN",
+  USER: "USER",
+} as const;
+export type UserRole = typeof USER_ROLE[keyof typeof USER_ROLE];
+
 export type User = {
   id: string;
   email: string;
@@ -22,9 +28,3 @@ export type UserPayload = {
   }[];
   user: User;
 };
-
-const USER_ROLE = {
-  ADMIN: "ADMIN",
-  USER: "USER",
-} as const;
-export type UserRole = typeof USER_ROLE[keyof typeof USER_ROLE];

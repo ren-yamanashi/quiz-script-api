@@ -1,16 +1,8 @@
 import type { User } from "./user";
 
-export type MutationBook = {
-  input: {
-    title: string;
-    author: string;
-    categoryId: number;
-    isRead: boolean;
-  };
-};
-
 export type Quiz = {
   id: string;
+  title: string;
   question: string;
   startCode: string;
   answerCode: string;
@@ -42,6 +34,7 @@ export type QuizResult = {
 
 export type MutationQuiz = {
   input: {
+    title: string;
     question: string;
     startCode: string;
     answerCode: string;

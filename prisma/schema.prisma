@@ -10,23 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Sample 
-model Book {
-  id         Int      @id @default(autoincrement())
-  title      String
-  author     String
-  isRead     Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  categoryId Int
-  category   Category @relation(fields: [categoryId], references: [id])
-}
-
-model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  books Book[]
-}
-
 // Public
 model User {
   id          String       @id @default(uuid())
@@ -46,6 +29,7 @@ enum UserRole {
 
 model Quiz {
   id            String       @id @default(uuid())
+  title         String
   question      String
   startCode     String
   answerCode    String

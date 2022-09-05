@@ -80,6 +80,7 @@ export const resolvers = {
       { prisma }: Context
     ): Promise<QuizPayload> => {
       const {
+        title,
         question,
         startCode,
         answerCode,
@@ -91,6 +92,7 @@ export const resolvers = {
       } = input;
       const newQuiz = await prisma.quiz.create({
         data: {
+          title,
           question,
           startCode,
           answerCode,

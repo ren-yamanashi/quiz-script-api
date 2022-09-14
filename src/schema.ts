@@ -39,7 +39,6 @@ export const typeDefs = gql`
     deleteUser(id: String!): AuthPayload!
   }
 
-
   enum UserRole {
     ADMIN
     USER

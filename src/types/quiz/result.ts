@@ -1,6 +1,7 @@
 export type QuizResult = {
   id: number;
   isCorrect: boolean;
+  userResult: string;
   createdAt: Date;
   quizId: string;
   userId: string;
@@ -9,6 +10,7 @@ export type QuizResult = {
 export type MutationQuizResult = {
   input: {
     isCorrect: boolean;
+    userResult: string;
     quizId: string;
     userId: string;
   };

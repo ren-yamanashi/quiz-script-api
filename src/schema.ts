@@ -38,6 +38,13 @@ export const typeDefs = gql`
     deleteQuizResult(id: Int!): QuizResultPayload!
     deleteUser(id: String!): AuthPayload!
   }
+
+
+  enum UserRole {
+    ADMIN
+    USER
+  }
+
   type User {
     id: String!
     name: String!
@@ -47,16 +54,14 @@ export const typeDefs = gql`
     createdAt: String!
     quizResults: [QuizResult]
   }
-  enum UserRole {
-    ADMIN
-    USER
-  }
+
   type Quiz {
     id: String!
     question: String!
     startCode: String!
     answerCode: String!
-    answers: [String]!
+    input: [String!]!
+    output: [String!]!
     hint: String
     answerComment: String
     isPublic: Boolean!
@@ -64,6 +69,9 @@ export const typeDefs = gql`
     quizResults: [QuizResult]
     category: QuizCategory
     categoryId: Int!
+    level: Int!
+    inputExample: [String]
+    outputExample: [String]
   }
   type QuizCategory {
     id: Int!
@@ -73,6 +81,7 @@ export const typeDefs = gql`
   type QuizResult {
     id: Int!
     isCorrect: Boolean!
+    userResult: String!
     createdAt: String!
     quiz: Quiz!
     quizId: String!
@@ -117,17 +126,22 @@ export const typeDefs = gql`
     question: String!
     startCode: String!
     answerCode: String!
-    answers: [String!]
-    hint: String!
+    input: [String!]!
+    output: [String!]!
+    hint: String
     answerComment: String
     isPublic: Boolean!
     categoryId: Int!
+    level: Int!
+    inputExample: [String]
+    outputExample: [String]
   }
   input AddQuizCategoryInput {
     name: String!
   }
   input AddQuizResultInput {
     isCorrect: Boolean!
+    userResult: String!
     quizId: String!
     userId: String!
   }
@@ -138,6 +152,7 @@ export const typeDefs = gql`
   }
   input UpdateQuizResultInput {
     isCorrect: Boolean
+    userResult: String
     quizId: String
     userId: String
   }
@@ -145,11 +160,15 @@ export const typeDefs = gql`
     question: String
     startCode: String
     answerCode: String
-    answers: [String]
+    input: [String]
+    output: [String]
     hint: String
     answerComment: String
     isPublic: Boolean
     categoryId: Int
+    level: Int
+    inputExample: [String]
+    outputExample: [String]
   }
   input UpdateQuizCategoryInput {
     name: String

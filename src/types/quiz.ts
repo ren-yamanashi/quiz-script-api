@@ -14,7 +14,8 @@ export type Quiz = {
   question: string;
   startCode: string;
   answerCode: string;
-  answers: string[];
+  input: string[];
+  output: string[];
   answerComment: string | undefined;
   isPublic: boolean;
   createdAt: Date;
@@ -22,6 +23,9 @@ export type Quiz = {
   quizResults?: QuizResult[];
   category?: QuizCategory;
   categoryId: number;
+  level: number;
+  inputExample: string[];
+  outputExample: string[];
 };
 
 export type QuizCategory = {
@@ -32,6 +36,7 @@ export type QuizCategory = {
 export type QuizResult = {
   id: number;
   isCorrect: boolean;
+  userResult: string;
   createdAt: string;
   updatedAt: string | undefined;
   quiz: Quiz;
@@ -45,11 +50,15 @@ export type MutationQuiz = {
     question: string;
     startCode: string;
     answerCode: string;
-    answers: string[];
+    input: string[];
+    output: string[];
     answerComment: string;
     hint: string;
     isPublic: boolean;
     categoryId: number;
+    level: number;
+    inputExample: string[];
+    outputExample: string[];
   };
 };
 

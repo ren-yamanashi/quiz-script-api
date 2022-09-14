@@ -76,29 +76,37 @@ export const resolvers = {
   Mutation: {
     addQuiz: async (
       _: any,
-      { input }: MutationQuiz,
+      { input: inputQuiz }: MutationQuiz,
       { prisma }: Context
     ): Promise<QuizPayload> => {
       const {
         question,
         startCode,
         answerCode,
-        answers,
+        input,
+        output,
         answerComment,
         hint,
         isPublic,
         categoryId,
-      } = input;
+        level,
+        inputExample,
+        outputExample,
+      } = inputQuiz;
       const newQuiz = await prisma.quiz.create({
         data: {
           question,
           startCode,
           answerCode,
-          answers,
+          input,
+          output,
           answerComment,
           hint,
           isPublic,
           categoryId,
+          level,
+          inputExample,
+          outputExample,
         },
       });
       return {
@@ -138,7 +146,7 @@ export const resolvers = {
       { input }: MutationQuizResult,
       { prisma }: Context
     ): Promise<QuizResultPayload> => {
-      const { isCorrect, quizId, userId } = input;
+      const { isCorrect, userResult, quizId, userId } = input;
       if (!(isCorrect && quizId && userId))
         return {
           errors: [
@@ -151,6 +159,7 @@ export const resolvers = {
       const newResult = await prisma.quizResult.create({
         data: {
           isCorrect,
+          userResult,
           quizId,
           userId,
         },

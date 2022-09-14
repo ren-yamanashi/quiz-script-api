@@ -51,7 +51,7 @@ model Quiz {
   answerCode    String
   input         String[]
   output        String[]
-  hint          String
+  hint          String       @default("") // ヒント
   answerComment String       @default("") // 解説
   isPublic      Boolean      @default(false) //公開/非公開
   createdAt     DateTime     @default(now())

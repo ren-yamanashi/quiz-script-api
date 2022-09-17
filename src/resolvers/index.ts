@@ -552,7 +552,6 @@ export const resolvers = {
   },
   QuizResult: {
     quiz: ({ quizId }: { quizId: string }, __: any, { prisma }: Context) => {
-      console.log(quizId);
       return prisma.quiz.findUnique({
         where: {
           id: quizId,
@@ -560,7 +559,6 @@ export const resolvers = {
       });
     },
     user: ({ userId }: { userId: string }, __: any, { prisma }: Context) => {
-      console.log(userId);
       return prisma.user.findUnique({
         where: {
           id: userId,

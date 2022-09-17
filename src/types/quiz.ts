@@ -11,21 +11,25 @@ export type MutationBook = {
 
 export type Quiz = {
   id: string;
+  title: string;
   question: string;
   startCode: string;
   answerCode: string;
-  input: string[];
-  output: string[];
-  answerComment: string | undefined;
+  inputFormat: string;
+  outputFormat: string;
+  inputExample: string[];
+  outputExample: string[];
+  inputDescription?: string[];
+  outputDescription?: string[];
+  conditions?: string;
+  answerComment?: string;
   isPublic: boolean;
   createdAt: Date;
-  updatedAt: Date | undefined;
+  updatedAt?: Date;
   quizResults?: QuizResult[];
   category?: QuizCategory;
   categoryId: number;
   level: number;
-  inputExample: string[];
-  outputExample: string[];
 };
 
 export type QuizCategory = {
@@ -47,18 +51,21 @@ export type QuizResult = {
 
 export type MutationQuiz = {
   input: {
+    title: string;
     question: string;
     startCode: string;
     answerCode: string;
-    input: string[];
-    output: string[];
-    answerComment: string;
-    hint: string;
+    inputFormat: string;
+    outputFormat: string;
+    inputExample: string[];
+    outputExample: string[];
+    inputDescription?: string[];
+    outputDescription?: string[];
+    conditions?: string;
+    answerComment?: string;
     isPublic: boolean;
     categoryId: number;
     level: number;
-    inputExample: string[];
-    outputExample: string[];
   };
 };
 

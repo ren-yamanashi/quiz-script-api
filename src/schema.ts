@@ -56,21 +56,25 @@ export const typeDefs = gql`
 
   type Quiz {
     id: String!
+    title: String!
     question: String!
     startCode: String!
     answerCode: String!
-    input: [String!]!
-    output: [String!]!
-    hint: String
+    inputFormat: String!
+    outputFormat: String!
+    inputExample: [String!]!
+    outputExample: [String!]!
+    inputDescription: [String]
+    outputDescription: [String]
+    conditions: String
     answerComment: String
     isPublic: Boolean!
     createdAt: String!
+    updatedAt: String
     quizResults: [QuizResult]
     category: QuizCategory
     categoryId: Int!
     level: Int!
-    inputExample: [String]
-    outputExample: [String]
   }
   type QuizCategory {
     id: Int!
@@ -122,18 +126,21 @@ export const typeDefs = gql`
     password: String!
   }
   input AddQuizInput {
+    title: String!
     question: String!
     startCode: String!
     answerCode: String!
-    input: [String!]!
-    output: [String!]!
-    hint: String
+    inputFormat: String!
+    outputFormat: String!
+    inputExample: [String!]!
+    outputExample: [String!]!
+    inputDescription: [String]
+    outputDescription: [String]
+    conditions: String
     answerComment: String
     isPublic: Boolean!
     categoryId: Int!
     level: Int!
-    inputExample: [String]
-    outputExample: [String]
   }
   input AddQuizCategoryInput {
     name: String!
@@ -156,18 +163,21 @@ export const typeDefs = gql`
     userId: String
   }
   input UpdateQuizInput {
+    title: String
     question: String
     startCode: String
     answerCode: String
-    input: [String]
-    output: [String]
-    hint: String
+    inputFormat: String
+    outputFormat: String
+    inputExample: [String]
+    outputExample: [String]
+    inputDescription: [String]
+    outputDescription: [String]
+    conditions: String
     answerComment: String
     isPublic: Boolean
     categoryId: Int
     level: Int
-    inputExample: [String]
-    outputExample: [String]
   }
   input UpdateQuizCategoryInput {
     name: String

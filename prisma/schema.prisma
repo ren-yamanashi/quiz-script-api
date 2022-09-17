@@ -10,24 +10,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Sample 
-model Book {
-  id         Int      @id @default(autoincrement())
-  title      String
-  author     String
-  isRead     Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  categoryId Int
-  category   Category @relation(fields: [categoryId], references: [id])
-}
-
-model Category {
-  id    Int    @id @default(autoincrement())
-  name  String
-  books Book[]
-}
-
-// Public
 model User {
   id          String       @id @default(uuid())
   name        String
@@ -45,23 +27,26 @@ enum UserRole {
 }
 
 model Quiz {
-  id            String       @id @default(uuid())
-  question      String
-  startCode     String
-  answerCode    String
-  input         String[]
-  output        String[]
-  hint          String       @default("") // ヒント
-  answerComment String       @default("") // 解説
-  isPublic      Boolean      @default(false) //公開/非公開
-  createdAt     DateTime     @default(now())
-  updatedAt     DateTime     @updatedAt
-  quizResults   QuizResult[]
-  category      QuizCategory @relation(fields: [categoryId], references: [id])
-  categoryId    Int
-  level         Int
-  inputExample  String[]
-  outputExample String[]
+  id                String       @id @default(uuid())
+  title             String
+  question          String
+  startCode         String
+  answerCode        String
+  inputFormat       String
+  outputFormat      String
+  inputExample      String[]
+  outputExample     String[]
+  inputDescription  String[]
+  outputDescription String[]
+  conditions        String       @default("")  // 条件
+  answerComment     String       @default("") // 解説
+  isPublic          Boolean      @default(false) //公開/非公開
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+  quizResults       QuizResult[]
+  category          QuizCategory @relation(fields: [categoryId], references: [id])
+  categoryId        Int
+  level             Int          @default(1)
 }
 
 model QuizCategory {
